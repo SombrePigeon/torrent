@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+    transmission:
+        build: .
+        environment:
+            - VIRTUAL_HOST=torrent.fenrir.ovh
+        ports:
+            - "9091:9091/tcp"
+            - "51413:51413/tcp"
+            - "51413:51413/udp"
+        tmpfs:
+            - /tmp
+        volumes:
+            - ./downloads:/transmission/downloads:rw
+            - ./incompletes:/transmission/incompletes:rw
+        restart: unless-stopped
