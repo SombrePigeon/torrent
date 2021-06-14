@@ -5,6 +5,9 @@ services:
         build: .
         environment:
             - VIRTUAL_HOST=torrent.fenrir.ovh
+            - VIRTUAL_PORT=9091
+            - LETSENCRYPT_HOST=torrent.fenrir.ovh
+            - LETSENCRYPT_EMAIL=contact@alexismartial.fr
         ports:
             - "9091:9091/tcp"
             - "51413:51413/tcp"
@@ -15,3 +18,9 @@ services:
             - ./downloads:/transmission/downloads:rw
             - ./incompletes:/transmission/incompletes:rw
         restart: unless-stopped
+        networks:
+            - nginxproxygitdeploy_net-proxy
+
+networks:
+    nginxproxygitdeploy_net-proxy:
+        external: true
