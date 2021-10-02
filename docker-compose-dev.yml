@@ -4,7 +4,7 @@ services:
     transmission:
         build:
             context: .
-            target: prod
+            target: dev
         ports:
             - "51413:51413/tcp"
             - "51413:51413/udp"
