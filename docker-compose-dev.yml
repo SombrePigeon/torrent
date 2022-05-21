@@ -11,8 +11,10 @@ services:
         tmpfs:
             - /tmp
         volumes:
-            - /data/torrent/downloads:/transmission/downloads:rw
-            - /data/torrent/incompletes:/transmission/incompletes:rw
+            - ${HOME}/dev/ds/data/torrent/downloads:/transmission/downloads:rw
+            - ${HOME}/dev/docker/data/torrent/incompletes:/transmission/incompletes:rw
+            #- /data/torrent/downloads:/transmission/downloads:rw
+            #- /data/torrent/incompletes:/transmission/incompletes:rw
         restart: unless-stopped
         networks:
             - nginxproxygitdeploy_net-proxy
